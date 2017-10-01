@@ -21,7 +21,7 @@ defmodule FreeGeoIP do
   Returns dict
   """
   def make_request(method, endpoint, locale \\ nil, body \\ []) do
-    url = config_base_url <> endpoint
+    url = config_base_url() <> endpoint
 
     headers = set_headers(locale)
 
@@ -70,12 +70,12 @@ defmodule FreeGeoIP do
       {"Accept", "application/json"}
     ]
 
-    headers = case auth_header(config_auth_user, config_auth_password) do
+    headers = case auth_header(config_auth_user(), config_auth_password()) do
       nil -> headers
       auth -> [auth | headers]
     end
 
-    headers = case language_header(locale) do
+    case language_header(locale) do
       nil -> headers
       lang -> [lang | headers]
     end

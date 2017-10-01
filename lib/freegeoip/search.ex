@@ -3,8 +3,6 @@ defmodule FreeGeoIP.Search do
   This module includes the basic search function to get geo information about a specified IP.
   """
 
-  @endpoint "authorization.json"
-
   @doc """
   Performs a IP search.
 
